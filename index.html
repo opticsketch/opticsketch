@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optic Sketch - virtual optics lab</title>
+    <style>
+        body {
+            font-family: -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .video-container {
+            background: #000;
+            aspect-ratio: 16/9;
+            margin: 2rem 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+.disabled-btn {
+            background: #ccc;
+            color: #666;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+    cursor: not-allowed;    /* Shows a 'block' icon on hover */
+    pointer-events: none;   /* Makes it unclickable */
+
+}
+        .btn {
+            background: #ff5e1a;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #e04d10;
+        }
+
+        .banner {
+            width: 100%;
+            height: auto;
+            display: block;
+            background-position: center;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+.lightbox img {
+  max-width: 70%;
+  max-height: 70%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.lightbox button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="asphere_system_layout.png" alt="Banner" class="banner">
+        <h1>Optic Sketch</h1>
+        <h2>Virtual optics lab</h2>
+		<a class="disabled-btn">
+  Buy License (Coming Soon)
+</a>
+		<a class="disabled-btn">
+  Download demo (Coming Soon)
+</a>
+
+    </header>
+
+    <div class="video-container">
+        <iframe width="800" height="415" src="https://www.youtube-nocookie.com/embed/eyFf5JvqIVQ?si=QfIkC4kXev4GlmNF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div>
+        <p>Optic Sketch is an easy-to-use and affordable 3D optical simulation tool that can help you assess component performance, and quickly layout and simulate optical systems. </p>
+		<p>Optic Sketch is local-first and subscription-free, and we don't collect or store your data.</p>
+    </div>
+
+    <div class="features">
+        <div>
+            <h3>Current Features (Beta):</h3>
+            <ul>
+                <li>Scalar and polarization ray tracing</li>
+                <li>Interactive placement and alignment of sources and components</li>
+                <li>3D view with easy navigation</li>
+				<li>Multi-field chromatic spot diagrams</li>
+				<li>Multi-threaded simulation</li>
+                <li>Incoherent and coherent detector diagrams</li>
+				<li>More analyses coming soon
+            </ul>
+        </div>
+        <div>
+            <h3>Component types</h3>
+            <ul>
+                <li>Multiple source types</li>
+                <li>Singlets, aspheres and doublets</li>
+                <li>Spherical and aspherical mirrors</li>
+                <li>Transmission and reflection gratings</li>
+                <li>Beam splitters</li>
+                <li>Filters and dichroic mirrors</li>
+				<li>More components coming soon</li>
+				
+            </ul>
+        </div>
+
+    </div>
+
+    <div>
+        <h3>Pricing</h3>
+        <ul>
+            <li>£25 (~$35): Personal use (hobby projects, learning, and experimentation)</li>
+            <li>£75 (~$100): Research/academic use (university work, non-commercial research)</li>
+            <li>£150 (~$200): Commercial use (business, client work, revenue-generating projects)</li>
+        </ul>
+        Contact us for educational use and multi-license discounts
+    </div>
+<div style="height:15px"></div>
+    <div>
+        <h3>Who is this for?</h3>
+        <ul>
+            <li>Makers and hobbyists</li>
+            <li>Engineers and technical users</li>
+            <li>Researchers and students</li>
+            <li>Anyone who prefers local, no-subscription tools</li>
+        </ul>
+    </div>
+<div style="height:15px"></div>
+    <div>
+        <h3>Screenshots</h3>
+		<div class="gallery">
+			<img src="asphere_system.png" alt="">
+			<img src="cassegrain.png" alt="">
+			<img src="filters_gratings_prisms.png" alt="">
+			<img src="interferometers.png" alt="">
+			<img src="materials_and_warnings.png" alt="">
+			<img src="spectrometers.png" alt="">
+			<!-- add more -->
+		</div>
+    </div>
+	<div style="height:15px"></div>
+    <div>
+        <h3>Future Plans</h3>
+        <p>Updates will be released as necessary to address bugs, improve performance, and add new features</p>
+
+
+    <p>Note: As we continue to develop and improve Optic Sketch, we reserve the right to adjust our pricing for new users. Existing customers will not be affected and will continue to receive the same updates for the purchased version.</p>
+    <p>We reserve the right to modify our pricing and licensing terms for future major versions. We will strive to make any changes reasonable and will provide advance notice whenever possible.</p>
+	
+    </div>
+<div style="height:15px"></div>
+    <div>
+        <h3>License and Usage:</h3>
+        <p>Provided as a beta</p>
+        <p>Provided "as is" without warranty or liability</p>
+        <p>Not for defense, military, or safety-critical applications</p>
+        <p>The full license agreement is available within the Optic Sketch application</p>
+    </div>
+<div style="height:15px"></div>
+<div>
+	<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2y89aBi9WvI7uytzkStYeg0beSteg7nfeNv1-w2-dRMx-dg/viewform?embedded=true" width="680" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</div>
+    <footer>
+        &copy; 2026 Optic Sketch. All rights reserved.
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <img id="lightbox-img">
+    </div>
+
+<script> 
+const images = document.querySelectorAll('.gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+let currentIndex = 0;
+
+images.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    currentIndex = index;
+    showImage();
+    lightbox.style.display = 'flex';
+  });
+});
+
+function showImage() {
+  lightboxImg.src = images[currentIndex].src;
+}
+
+// next / previous controls
+function nextImage() {
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage();
+}
+
+function prevImage() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage();
+}
+
+// click to close (optional: only close if background clicked)
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = 'none';
+  }
+});
+
+// keyboard support
+document.addEventListener('keydown', (e) => {
+  if (lightbox.style.display === 'flex') {
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'Escape') lightbox.style.display = 'none';
+  }
+});
+</script>
+
+    <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+</body>
+</html>
