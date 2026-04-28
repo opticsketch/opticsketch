@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optic Sketch - downloads</title>
+    <style>
+        body {
+            font-family: -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .video-container {
+            background: #000;
+            aspect-ratio: 16/9;
+            margin: 2rem 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .disabled-btn {
+            background: #ccc;
+            color: #666;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .btn {
+            background: #ff5e1a;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #e04d10;
+        }
+
+        .banner {
+            width: 100%;
+            height: auto;
+            display: block;
+            background-position: center;
+        }
+
+        .integrity-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 16px;
+            max-width: 650px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 20px 0;
+        }
+
+        .integrity-title {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hash-container {
+            display: flex;
+            background: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .hash-value {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 13px;
+            padding: 10px;
+            color: #212529;
+            word-break: break-all;
+            flex-grow: 1;
+            background: #fff;
+        }
+
+        .copy-btn {
+            background: #e9ecef;
+            border: none;
+            border-left: 1px solid #ced4da;
+            padding: 0 15px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            color: #495057;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover { background: #dee2e6; }
+        .copy-btn:active { background: #ced4da; }
+
+        .verification-note {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 8px;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 70%;
+            max-height: 70%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .lightbox button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            background: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 4rem;
+        }
+
+        .comparison-container {
+            overflow-x: auto;
+            margin: 30px 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            min-width: 500px;
+        }
+
+        .comp-table th, .comp-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comp-table thead th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .col-feature { width: 50%; }
+        .col-demo, .col-full { width: 25%; text-align: center; }
+
+        .comp-table tbody tr:hover {
+            background-color: #fafafa;
+        }
+
+        .yes { color: #27ae60; font-weight: bold; font-size: 18px; }
+        .no { color: #e74c3c; font-weight: bold; font-size: 18px; }
+        .feature-name { font-weight: 500; color: #333; }
+        .feature-desc { display: block; font-size: 12px; color: #777; font-weight: 400; margin-top: 2px; }
+
+        .full-highlight {
+            background-color: #f0f7ff;
+            font-weight: 600;
+        }
+
+        .btn-double {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
+            background: #fa5f00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-double:hover { background-color: #34495e; }
+
+        .btn-main {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .btn-sub {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="cassegrain_b.png" alt="Banner" class="banner">
+        <h1>Optic Sketch</h1>
+        <h2>Downloads</h2>
+        <p>Download the free demo version first to evaluate and check for compatibility with your system.</p>
+        <a href="https://opticsketch.lemonsqueezy.com/" class="btn-double">
+            <span class="btn-main">Buy license</span>
+            <span class="btn-sub">OpticSketch x64</span>
+        </a>
+        <a href="https://github.com/opticsketch/opticsketch/releases/download/Demo_v010/OpticSketchDemo.zip" class="btn-double">
+            <span class="btn-main">Free demo</span>
+            <span class="btn-sub">OpticSketchDemo x64</span>
+        </a>
+    </header>
+
+    <div class="comparison-container">
+        <table class="comp-table">
+            <thead>
+                <tr>
+                    <th class="col-feature">Current features</th>
+                    <th class="col-demo">Demo</th>
+                    <th class="col-full">Full Version</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="feature-name">Maximum number of components</span>
+                    </td>
+                    <td class="col-demo">3</td>
+                    <td class="col-full">150</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Maximum number of sources</span>
+                    </td>
+                    <td class="col-demo">1</td>
+                    <td class="col-full">50</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Maximum number of detector arrays</span>
+                    </td>
+                    <td class="col-demo">1</td>
+                    <td class="col-full">20</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Number of source types</span>
+                    </td>
+                    <td class="col-demo">3</td>
+                    <td class="col-full">4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Number of component types</span>
+                    </td>
+                    <td class="col-demo">10</td>
+                    <td class="col-full">16</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="feature-name">Save and load files</span>
+                    </td>
+                    <td class="col-demo"><span class="no">✘</span></td>
+                    <td class="col-full full-highlight"><span class="yes">✔</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="integrity-box">
+        <div class="integrity-title">
+            <span>🔒OpticSketch.zip SHA-256 Checksum</span>
+        </div>
+        <div class="hash-container">
+            <div class="hash-value" id="sha256-hash">8B94F041262D167B28B5DAEFF31E81D6DEB2C871034F57EE01F15BD329E3E9C4</div>
+            <button class="copy-btn" onclick="copyHash()">Copy</button>
+        </div>
+    </div>
+
+    <a href="https://hybrid-analysis.com/sample/dfdbe8bbf7e4e676d5a7ed6477fb6617ceb1c797fb39544d7dd7ec13a4665a4d" target="_blank">Hybrid-Analysis report for OpticSketchDemo.zip </a>
+    <div class="integrity-box">
+        <div class="integrity-title">
+            <span>🔒OpticSketchDemo.zip SHA-256 Checksum</span>
+        </div>
+        <div class="hash-container">
+            <div class="hash-value" id="sha256-hash-demo">dfdbe8bbf7e4e676d5a7ed6477fb6617ceb1c797fb39544d7dd7ec13a4665a4d</div>
+            <button class="copy-btn" onclick="copyHashDemo()">Copy</button>
+        </div>
+    </div>
+
+    <section>
+        <h2>Please note</h2>
+        <p>
+            <strong>Demo Version:</strong> The demo is fully portable and does not require a license key. 
+            To ensure users are testing the most recent version, <strong>demo builds are time-limited</strong>. 
+            The demo will be updated periodically; please check back 
+            for the latest version if your current build has expired.
+        </p>
+
+        <p>
+            <strong>Full Version:</strong> Requires an active internet connection on 
+            <strong>first launch</strong> to validate your license with Lemon Squeezy. Once validated, 
+            it saves a local license token to your <code>%AppData%</code> folder so you can 
+            continue to use the software offline.
+        </p>
+
+        <div style="background: #fff4e5; border-left: 5px solid #ffa117; padding: 15px; margin-top: 20px;">
+            <strong>⚠️ Antivirus & Windows Defender Warnings</strong>
+            <p>
+                This software is <strong>not digitally signed</strong>, 
+                Windows SmartScreen may display a warning. To run the app: Click <em>"More Info"</em> 
+                and then <em>"Run Anyway."</em>
+            </p>
+        </div>
+    </section>
+
+    <script>
+        function copyHash() {
+            const hash = document.getElementById('sha256-hash').innerText;
+            navigator.clipboard.writeText(hash).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerText = 'Copied!';
+                setTimeout(() => { btn.innerText = 'Copy'; }, 2000);
+            });
+        }
+
+        function copyHashDemo() {
+            const hash = document.getElementById('sha256-hash-demo').innerText;
+            navigator.clipboard.writeText(hash).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerText = 'Copied!';
+                setTimeout(() => { btn.innerText = 'Copy'; }, 2000);
+            });
+        }
+    </script>
+
+    <footer>
+        &copy; 2026 Optic Sketch. All rights reserved.
+    </footer>
+</body>
+</html>
