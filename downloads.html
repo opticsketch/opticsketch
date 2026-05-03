@@ -28,6 +28,13 @@
             align-items: center;
             justify-content: center;
             color: white;
+            overflow: hidden; /* Add this */
+            width: 100%;      /* Add this */
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
         }
 
         .features {
@@ -282,6 +289,11 @@
         </a>
     </header>
 
+    <div class="video-container" id="video-one">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/yXo_oClkZ8w?si=gT1OWFIAtztcK0aq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    
     <div class="comparison-container">
         <table class="comp-table">
             <thead>
